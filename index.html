@@ -60,10 +60,9 @@
     async function predict() {
         // predict can take in an image, video or canvas html element
         // Prediction #1: run input through posenet
-        // estimatePose can take in an image, video or canvas html element
-        const { pose, posenetOutput } = await model.estimatePose(webcam.canvas);
+        // estimatePose can take in an image, video or canvas html element        
         // Prediction 2: run input through teachable machine classification model
-        const prediction = await model.predict(posenetOutput);
+        const prediction = await model.predict(webcam.canvas);
 
         for (let i = 0; i < maxPredictions; i++) {
             const classPrediction =
@@ -78,10 +77,7 @@
 			else
 			{   
 				labelContainer.childNodes[0].innerHTML = "알 수 없음";        }	
-		}	
-
-        // finally draw the poses
-        drawPose(pose);
+		}	                
     }
 </script>
 </body>
